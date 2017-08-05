@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { ProductsComponent } from './main/products/products.component';
 import { ProductComponent } from './main/products/product/product.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { reducers } from '../shared/reducers';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,10 @@ import { ProductComponent } from './main/products/product/product.component';
     ProductComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    //2/ Setup store for given reducers
+    StoreModule.forRoot(reducers),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]

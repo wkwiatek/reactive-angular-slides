@@ -1,7 +1,8 @@
 <div class="container">
   <h1>Store</h1>
+  <!--3- Now we can use async pipe to get the latest value -->
   <app-products
-    [products]="products"
+    [products]="products$ | async"
     (buyProductClick)="handleBuyProduct($event)"
   ></app-products>
 </div>
