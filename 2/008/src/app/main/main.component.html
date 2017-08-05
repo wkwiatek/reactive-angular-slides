@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Store</h1>
+  <app-products
+    [products]="products"
+    (buyProductClick)="handleBuyProduct($event)"
+  ></app-products>
+  <a
+    href="javascript:void(0)"
+    (click)="toggleButtonClick$.next()"
+  >
+    Toggle counter!
+  </a>
+  <div>Counter is {{ counterStateDisplay$ | async }}</div>
+  <div>{{ counter$ | async }}</div>
+</div>
