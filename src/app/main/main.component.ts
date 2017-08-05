@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../shared/models/product';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 @Component({
   selector: 'app-main',
@@ -28,7 +29,8 @@ export class MainComponent implements OnInit {
       console.info('time passed out');
       subscriber.next(1);
     }, 2000);
-  });
+  // Let's make it HOT!
+  }).share();
 
   ngOnInit() {
     this.subscription = this.isNotAvailable.subscribe(id => {
@@ -36,7 +38,7 @@ export class MainComponent implements OnInit {
       product.isSoldOut = true;
     });
 
-    //3/ What's going to happen?
+    //3/ What's going to happen now?
     this.isNotAvailable.subscribe();
     this.isNotAvailable.subscribe();
     this.isNotAvailable.subscribe();
