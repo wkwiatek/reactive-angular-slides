@@ -20,7 +20,19 @@ export class MainComponent implements OnInit {
 
   constructor() { }
 
+  //5/ Callback can be used to trigger product ID that became unavailable
+  private isNotAvailable(callback: (id: string | number) => void) {
+    setTimeout(() => {
+      callback(1);
+    }, 2000);
+  }
+
   ngOnInit() {
+    //4/ And that's how we use it
+    this.isNotAvailable(id => {
+      const product = this.products.find(p => p.id === id);
+      product.isSoldOut = true;
+    });
   }
 
   public handleBuyProduct(id: number | string) {
