@@ -23,15 +23,15 @@ export class MainComponent implements OnInit {
 
   private subscription;
 
-  //5/ Observable can handle this task as well
   private isNotAvailable = Observable.create(subscriber => {
     setTimeout(() => {
+      // Let's add a log
+      console.info('time passed out');
       subscriber.next(1);
     }, 2000);
   });
 
   ngOnInit() {
-    //4/ Instead of .then(), we now .subscribe()
     this.subscription = this.isNotAvailable.subscribe(id => {
       const product = this.products.find(p => p.id === id);
       product.isSoldOut = true;
@@ -42,7 +42,6 @@ export class MainComponent implements OnInit {
     this.products = this.products.filter(p => p.id !== id);
   }
 
-  //3/ Now we can clear our subscription
   public stopCounting() {
     this.subscription.unsubscribe();
   }
