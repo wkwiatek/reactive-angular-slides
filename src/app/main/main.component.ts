@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../shared/models/product';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-main',
@@ -20,16 +21,18 @@ export class MainComponent implements OnInit {
 
   constructor() { }
 
-  //5/ Promise is built-in feature now
-  private isNotAvailable = new Promise((resolve, reject) => {
+  private subscription;
+
+  //5/ Observable can handle this task as well
+  private isNotAvailable = Observable.create(subscriber => {
     setTimeout(() => {
-      resolve(1);
+      subscriber.next(1);
     }, 2000);
   });
 
   ngOnInit() {
-    //4/ We can make it cleaner, and forget about callback hell
-    this.isNotAvailable.then(id => {
+    //4/ Instead of .then(), we now .subscribe()
+    this.subscription = this.isNotAvailable.subscribe(id => {
       const product = this.products.find(p => p.id === id);
       product.isSoldOut = true;
     });
@@ -39,9 +42,9 @@ export class MainComponent implements OnInit {
     this.products = this.products.filter(p => p.id !== id);
   }
 
-  //3/ But what if we want to stop counting?
+  //3/ Now we can clear our subscription
   public stopCounting() {
-    console.info('how to stop a promise?');
+    this.subscription.unsubscribe();
   }
 
 }
