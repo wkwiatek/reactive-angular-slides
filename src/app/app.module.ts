@@ -19,7 +19,6 @@ import { reducers } from '../shared/reducers';
   ],
   imports: [
     BrowserModule,
-    //2/ Setup store for given reducers
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],

@@ -1,6 +1,6 @@
 import { IProduct } from '../models/product';
+import * as productsActions from '../actions/products';
 
-//14/ State that previously was in a component now goes here
 export const initialState: IProduct[] = [{
   id: 0,
   name: 'coffee',
@@ -15,9 +15,11 @@ export const initialState: IProduct[] = [{
   price: 5.6
 }];
 
-//7/ Hence we have no actions yet, we're just returning the same state always
-export default function reducer(state = initialState, action: any): IProduct[] {
+export default function reducer(state = initialState, action: productsActions.Actions): IProduct[] {
   switch (action.type) {
+    //2/ State change is handled here; we have to create new stated based on action and old state
+    case productsActions.BUY_PRODUCT:
+      return state.filter(p => p.id !== action.payload);
     default: {
       return state;
     }
