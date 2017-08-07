@@ -1,7 +1,12 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
+import { ProductsResolver } from './shared/resolvers/products.resolver';
 
 export const routes: Routes = [{
   path: '',
-  component: MainComponent
+  component: MainComponent,
+  //3/ Let's add resolver to wait until products are loaded
+  resolve: {
+    productsAction: ProductsResolver
+  }
 }];
