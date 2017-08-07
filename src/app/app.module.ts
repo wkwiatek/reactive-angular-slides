@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { ProductsResolver } from "./shared/resolvers/products.resolver";
+import { logger } from './shared/reducers/logger.meta';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductsResolver } from "./shared/resolvers/products.resolver";
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot(reducers),
+    // Adding meta reducers
+    StoreModule.forRoot(reducers, { metaReducers: [logger] },),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ReactiveFormsModule,
     HttpModule,
