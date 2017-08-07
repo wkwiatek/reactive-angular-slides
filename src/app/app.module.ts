@@ -11,6 +11,10 @@ import { environment } from '../environments/environment';
 import { reducers } from '../shared/reducers';
 import { OrderFormComponent } from './main/order-form/order-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from '../shared/effects/products';
+import { ProductsService } from './shared/services/products.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -24,9 +28,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+
+    EffectsModule.forRoot([ProductsEffects])
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
