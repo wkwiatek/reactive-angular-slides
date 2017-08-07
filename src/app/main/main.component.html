@@ -1,7 +1,16 @@
 <div class="container">
   <h1>Store</h1>
-  <app-products
-    [products]="products$ | async"
-    (buyProductClick)="handleBuyProduct($event)"
-  ></app-products>
+  <div class="row">
+    <app-products
+      [products]="products$ | async"
+      (buyProductClick)="handleBuyProduct($event)"
+      class="col"
+    ></app-products>
+    <!--5- Newly created component will take possible products too -->
+    <app-order-form
+      [products]="products$ | async"
+      (orderSubmit)="handleOrderSubmit($event)"
+      class="col"
+    ></app-order-form>
+  </div>
 </div>

@@ -23,4 +23,8 @@ export class MainComponent implements OnInit {
     this.store.dispatch(new BuyProductAction(id));
   }
 
+  public handleOrderSubmit(formValues: { product: string | number, email: string }) {
+    console.log(formValues)
+  }
+
 }

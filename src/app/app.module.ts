@@ -9,18 +9,24 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers } from '../shared/reducers';
+import { OrderFormComponent } from './main/order-form/order-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+
+    // Now, let's use Reactive Forms
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
