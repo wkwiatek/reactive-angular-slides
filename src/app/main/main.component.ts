@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { IState } from '../shared/reducers/index';
+import { getProducts, IState } from '../shared/reducers/index';
 import { IProduct } from '../shared/models/product';
 import { BuyProductAction } from '../shared/actions/products';
 
@@ -16,7 +16,8 @@ export class MainComponent implements OnInit {
   constructor(private store: Store<IState>) {}
 
   ngOnInit() {
-    this.products$ = this.store.select(state => state.products);
+    // Instead of directly passing map function we can use selector
+    this.products$ = this.store.select(getProducts);
   }
 
   public handleBuyProduct(id: number | string) {
