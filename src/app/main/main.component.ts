@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { IState } from '../../shared/reducers/index';
 import { IProduct } from '../../shared/models/product';
-import { BuyProductAction, GetProductsInitAction } from '../../shared/actions/products';
+import { asyncGetProducts, BuyProductAction } from '../../shared/actions/products';
 
 @Component({
   selector: 'app-main',
@@ -16,8 +16,7 @@ export class MainComponent implements OnInit {
   constructor(private store: Store<IState>) {}
 
   ngOnInit() {
-    // Initialize call for products
-    this.store.dispatch(new GetProductsInitAction());
+    this.store.dispatch(asyncGetProducts.init());
     this.products$ = this.store.select(state => state.products);
   }
 
