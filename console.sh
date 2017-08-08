@@ -1,2 +1,2 @@
-# install store and devtools
-npm i @ngrx/store @ngrx/store-devtools
+# install marbles for testing
+npm i jasmine-marbles
