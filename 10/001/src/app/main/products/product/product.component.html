@@ -1,0 +1,11 @@
+<p>
+  <a
+    class="btn btn-success btn-sm"
+    href="javascript:void(0)"
+    (click)="buyProductClick.next(product.id)"
+  >
+    Buy
+  </a>
+  <span>{{ product.name }}</span>
+  <span class="badge badge-pill badge-primary">{{ product.price | currency:'USD':true }}</span>
+</p>
