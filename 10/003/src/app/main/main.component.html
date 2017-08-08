@@ -1,0 +1,16 @@
+<div class="container">
+  <a [routerLink]="['/login']">Go to login -></a>
+  <h1>Store</h1>
+  <div class="row">
+    <app-products
+      [products]="products$ | async"
+      (buyProductClick)="handleBuyProduct($event)"
+      class="col"
+    ></app-products>
+    <app-order-form
+      [products]="products$ | async"
+      (orderSubmit)="handleOrderSubmit($event)"
+      class="col"
+    ></app-order-form>
+  </div>
+</div>
