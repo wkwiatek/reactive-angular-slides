@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { ProductsResolver } from "./shared/resolvers/products.resolver";
 import { logger } from './shared/reducers/logger.meta';
+import { localStorageSyncReducer } from './shared/reducers/localstorage.meta';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import { logger } from './shared/reducers/logger.meta';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot(reducers, { metaReducers: [logger] },),
+    //3/ Add new meta reducer
+    StoreModule.forRoot(reducers, {
+      metaReducers: [logger, localStorageSyncReducer]
+    }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ReactiveFormsModule,
     HttpModule,
