@@ -34,7 +34,7 @@ import { ProductsResolver } from "./shared/resolvers/products.resolver";
     ReactiveFormsModule,
     HttpModule,
     EffectsModule.forRoot([ProductsEffects]),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [
     ProductsService,

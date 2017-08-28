@@ -35,7 +35,7 @@ import { logger } from './shared/reducers/logger.meta';
     ReactiveFormsModule,
     HttpModule,
     EffectsModule.forRoot([ProductsEffects]),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [
     ProductsService,
