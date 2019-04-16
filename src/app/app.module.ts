@@ -24,7 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    // Now, let's use Reactive Forms
     ReactiveFormsModule
   ],
   providers: [],

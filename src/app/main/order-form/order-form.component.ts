@@ -14,30 +14,24 @@ export class OrderFormComponent implements OnInit {
   @Input() products: IProduct[];
   @Output() orderSubmit = new EventEmitter();
 
-  // Definition of a form
   public orderForm: FormGroup;
-  // form submit can be initialized with false using BehaviorSubject
   public formSubmit$ = new BehaviorSubject(false);
   public checkAsyncErrors$;
 
-  // Form builder to create a reactive form
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    //4/ Initialize a form
     this.orderForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       product: ['', Validators.required]
     });
 
-    //3/ Let's test some async error
     this.checkAsyncErrors$ = this.orderForm.valueChanges
       .pipe(
         debounceTime(1000),
         switchMap(() => of({error: 'Some async error!'}))
       );
 
-    //4/ Stream of submits
     this.formSubmit$
       .pipe(
         withLatestFrom(this.orderForm.valueChanges, (_, values) => values),

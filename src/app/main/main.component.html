@@ -6,7 +6,6 @@
       (buyProductClick)="handleBuyProduct($event)"
       class="col"
     ></app-products>
-    <!--5- Newly created component will take possible products too -->
     <app-order-form
       [products]="products$ | async"
       (orderSubmit)="handleOrderSubmit($event)"
