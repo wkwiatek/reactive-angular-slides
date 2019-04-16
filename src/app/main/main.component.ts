@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
       console.info('time passed out');
       subscriber.next(1);
     }, 2000);
-  // Let's make it HOT!
   }).pipe(share());
 
   ngOnInit() {
@@ -36,7 +35,6 @@ export class MainComponent implements OnInit {
       product.isSoldOut = true;
     });
 
-    //3/ What's going to happen this time?
     this.isNotAvailable.subscribe();
     this.isNotAvailable.subscribe();
     this.isNotAvailable.subscribe();
