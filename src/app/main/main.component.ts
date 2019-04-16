@@ -18,19 +18,25 @@ export class MainComponent implements OnInit {
     price: 0.95
   }];
 
-  //5/ Callback can be used to trigger product ID that became unavailable
-  private isNotAvailable(callback: (id: string | number) => void) {
+  //5/ Promise is built-in feature now
+  private isNotAvailable = new Promise((resolve, reject) => {
     setTimeout(() => {
-      callback(1);
+      resolve(1);
     }, 2000);
-  }
+  });
+
 
   ngOnInit() {
-    //4/ And that's how we use it
-    this.isNotAvailable(id => {
+    //4/ We can make it cleaner, and forget about callback hell
+    this.isNotAvailable.then(id => {
       const product = this.products.find(p => p.id === id);
       product.isSoldOut = true;
     });
+  }
+
+  //3/ But what if we want to stop counting?
+  public stopCounting() {
+    console.info('how to stop a promise?');
   }
 
   public handleBuyProduct(id: number | string) {
