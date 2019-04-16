@@ -23,7 +23,6 @@ export class MainComponent implements OnInit {
 
   private isNotAvailable = Observable.create(subscriber => {
     setTimeout(() => {
-      // Let's add a log
       console.info('time passed out');
       subscriber.next(1);
     }, 2000);
@@ -34,6 +33,11 @@ export class MainComponent implements OnInit {
       const product = this.products.find(p => p.id === id);
       product.isSoldOut = true;
     });
+
+    //3/ What's going to happen?
+    this.isNotAvailable.subscribe();
+    this.isNotAvailable.subscribe();
+    this.isNotAvailable.subscribe();
   }
 
   public stopCounting() {
