@@ -12,10 +12,8 @@ export class ProductsEffects {
   @Effect()
   getProducts$ = this.actions$
     .pipe(
-      // Change to asyncGetProduct to get types
       ofType(productsActions.asyncGetProducts.types.INIT),
       switchMap(() => this.productsService.getProducts().pipe(
-        // The payload shape is still being tracked
         map((payload: IProduct[]) => productsActions.asyncGetProducts.success(payload)),
         catchError((error: any) => of(productsActions.asyncGetProducts.failure(error)))
       ))

@@ -5,7 +5,6 @@ export const initialState: IProduct[] = [];
 
 export default function reducer(state = initialState, action: any): IProduct[] {
   switch (action.type) {
-    //2/ Type can be taken from our factory-generated action
     case productsActions.asyncGetProducts.types.SUCCESS:
       return action.payload;
     case productsActions.BUY_PRODUCT:

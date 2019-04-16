@@ -1,4 +1,3 @@
-//22/ Factory like this can help us take care about generic calls
 export const asyncActionCreatorFactory = <I, S, F>(type) => {
   const types: {
     readonly INIT: string,
