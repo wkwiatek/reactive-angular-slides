@@ -16,8 +16,7 @@ export class MainComponent implements OnInit {
   constructor(private store: Store<IState>) {}
 
   ngOnInit() {
-    // Initialize call for products
-    this.store.dispatch(new GetProductsInitAction());
+    this.store.dispatch(asyncGetProducts.init());
     this.products$ = this.store.select(state => state.products);
   }
 
