@@ -1,0 +1,50 @@
+<!-- That's how we connect controller's part of the form with view -->
+<form [formGroup]="orderForm" novalidate (submit)="formSubmit$.next(true)">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <!--7- Form control name is mapping to the name passed into form builder -->
+    <input
+      formControlName="email"
+      id="email"
+      type="email"
+      class="form-control"
+      placeholder="Enter email"
+    >
+    <!--4- We can use helpers like .get or .hasError -->
+    <div
+      *ngIf="(formSubmit$ | async) && orderForm.get('email').hasError('required')"
+      class="alert alert-warning"
+    >
+      <strong>Warning!</strong> This field is empty
+    </div>
+    <div
+      *ngIf="(formSubmit$ | async) && orderForm.get('email').hasError('email')"
+      class="alert alert-warning"
+    >
+      <strong>Warning!</strong> This field is not an email
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="product">Example select</label>
+    <select
+      formControlName="product"
+      class="form-control"
+      id="product"
+    >
+      <option *ngFor="let p of products" [value]="p.id">{{ p.name }}</option>
+    </select>
+    <div
+      *ngIf="(formSubmit$ | async) && orderForm.get('product').hasError('required')"
+      class="alert alert-warning"
+    >
+      <strong>Warning!</strong> Product is not chosen
+    </div>
+  </div>
+  <div
+    *ngIf="checkAsyncErrors$ | async"
+    class="alert alert-warning"
+  >
+    <strong>Warning!</strong> Async error - don't care about it
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
