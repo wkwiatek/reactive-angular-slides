@@ -21,22 +21,21 @@ export class MainComponent implements OnInit {
 
   private subscription;
 
-  //5/ Promise is built-in feature now
   private isNotAvailable = Observable.create(subscriber => {
     setTimeout(() => {
+      // Let's add a log
+      console.info('time passed out');
       subscriber.next(1);
     }, 2000);
   });
 
   ngOnInit() {
-    //4/ Instead of .then(), we now have a .subscribe()
     this.subscription = this.isNotAvailable.subscribe(id => {
       const product = this.products.find(p => p.id === id);
       product.isSoldOut = true;
     });
   }
 
-  //3/ And we can clear our subscription
   public stopCounting() {
     this.subscription.unsubscribe();
   }
