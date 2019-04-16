@@ -19,7 +19,6 @@ import { StoreModule } from '@ngrx/store';
   ],
   imports: [
     BrowserModule,
-    //2/ Setup store for given reducers
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
