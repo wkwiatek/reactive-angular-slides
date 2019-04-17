@@ -1,3 +1,28 @@
-<p>
-  login works!
-</p>
+<!--4- Here we can use isFormVisible stream -->
+<div
+  *ngIf="isFormVisible$ | async"
+  class="container mt-3"
+>
+  <div class="row">
+    <form class="form-inline">
+      <label class="sr-only" for="email">Email</label>
+      <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" id="email" placeholder="jane@doe.me">
+
+      <label class="sr-only" for="username">Username</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input class="form-control" id="username" placeholder="Username">
+      </div>
+
+      <label class="ml-2 mr-1" for="products">Favorite:</label>
+      <div class="form-group mb-2 mr-3 mb-sm-0">
+        <select class="form-control" id="products">
+          <!-- And populate products -->
+          <option *ngFor="let p of products$ | async" [value]="p.id">{{ p.name }}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
