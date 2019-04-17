@@ -13,12 +13,10 @@ describe('MainComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MainComponent ],
-      //4/ Mock store and dispatch, select functions
       providers: [{
         provide: Store,
         useValue: jasmine.createSpyObj('Store', ['dispatch', 'pipe']),
       }],
-      // Tells the compiler not to error on unknown elements and attributes aka shallow render
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
