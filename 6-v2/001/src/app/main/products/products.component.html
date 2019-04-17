@@ -1,0 +1,5 @@
+<app-product
+  *ngFor="let p of products"
+  [product]="p"
+  (buyProductClick)="buyProductClick.next($event)"
+></app-product>
