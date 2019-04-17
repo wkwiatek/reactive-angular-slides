@@ -10,10 +10,8 @@ import { asyncGetProducts } from '../actions/products';
 @Injectable()
 export class ProductsResolver implements Resolve<Action> {
 
-  // Actions stream can be helpful
   constructor(private actions$: Actions, private store: Store<IState>) {}
 
-  //8/ In resolver we can first dispatch the init actions, and then wait for either success or failure
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Action> {
     this.store.dispatch(asyncGetProducts.init());
     return this.actions$

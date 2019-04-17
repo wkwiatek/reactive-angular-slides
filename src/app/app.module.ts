@@ -38,7 +38,6 @@ import { ProductsResolver } from './shared/resolvers/products';
   ],
   providers: [
     ProductsService,
-    // Resolver needs to be provided
     ProductsResolver
   ],
   bootstrap: [AppComponent]
