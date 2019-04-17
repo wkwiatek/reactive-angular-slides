@@ -16,7 +16,6 @@ export class MainComponent implements OnInit {
   constructor(private store: Store<IState>) {}
 
   ngOnInit() {
-    // Instead of directly passing map function we can use selector
     this.products$ = this.store.pipe(select(getProducts));
   }
 

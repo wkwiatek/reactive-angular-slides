@@ -18,6 +18,7 @@ import { ProductsEffects } from './shared/effects/products';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { ProductsResolver } from './shared/resolvers/products';
+import { logger } from './shared/reducers/logger.meta';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductsResolver } from './shared/resolvers/products';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot(reducers),
+    // Meta reducers are being added in a different way
+    StoreModule.forRoot(reducers, { metaReducers: [logger] }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ReactiveFormsModule,
     HttpClientModule,
