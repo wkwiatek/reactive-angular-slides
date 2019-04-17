@@ -32,7 +32,6 @@ import { localStorageSyncReducer } from './shared/reducers/localstorage.meta';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    //3/ Add new meta reducer
     StoreModule.forRoot(reducers, {
       metaReducers: [logger, localStorageSyncReducer]
     }),
