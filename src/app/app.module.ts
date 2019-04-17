@@ -31,7 +31,6 @@ import { logger } from './shared/reducers/logger.meta';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    // Meta reducers are being added in a different way
     StoreModule.forRoot(reducers, { metaReducers: [logger] }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ReactiveFormsModule,

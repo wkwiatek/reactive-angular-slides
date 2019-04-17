@@ -1,4 +1,3 @@
-//11/ Meta reducer gets reducers as input and expects new reducer as a result
 export function logger (reducer) {
   return (state, action) => {
     console.group(action.type);
