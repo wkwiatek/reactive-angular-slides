@@ -1,4 +1,3 @@
-<!--4- Here we can use isFormVisible stream -->
 <div
   *ngIf="isFormVisible$ | async"
   class="container mt-3"
@@ -17,7 +16,6 @@
       <label class="ml-2 mr-1" for="products">Favorite:</label>
       <div class="form-group mb-2 mr-3 mb-sm-0">
         <select class="form-control" id="products">
-          <!-- And populate products -->
           <option *ngFor="let p of products$ | async" [value]="p.id">{{ p.name }}</option>
         </select>
       </div>

@@ -11,7 +11,6 @@ import { StoreModule } from '@ngrx/store';
   imports: [
     CommonModule,
     RouterModule.forChild(loginRoutes),
-    // Store module has also option to add for specific module
     StoreModule.forFeature('login', loginReducer)
   ]
 })
