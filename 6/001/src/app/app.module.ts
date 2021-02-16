@@ -33,7 +33,7 @@ import { routes } from './app.routes';
     ReactiveFormsModule,
     HttpModule,
     EffectsModule.forRoot([ProductsEffects]),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

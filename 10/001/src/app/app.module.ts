@@ -38,7 +38,7 @@ import { localStorageSyncReducer } from './shared/reducers/localstorage.meta';
     ReactiveFormsModule,
     HttpModule,
     EffectsModule.forRoot([ProductsEffects]),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [
     ProductsService,
